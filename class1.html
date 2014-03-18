@@ -74,9 +74,9 @@
           <div class = "left-align">
           <p>I'm Catherine Farman</p>
           <ul>
-            <li>Front End Developer at WebLinc in Old City</li>
-            <li>I write HTML, CSS and Javascript for eCommerce sites</li>
-            <li>Some of our clients are Free People, BHLDN, Sanrio, The Sak, Brooklyn Industries, The Strand Bookstore...</li>
+            <li>Developer at Happy Cog</li>
+            <li>I write HTML, CSS and Javascript</li>
+            <li>I use tools like Sublime, Git, and Sass to make it easier and faster to get work done</li>
           </ul>
           </div>
         </section>
@@ -88,7 +88,6 @@
           <ul>
             <li>Who are you?</li>
             <li>What do you hope to get out of the class?</li>
-            <li>What's something no one in this room knows about you?</li>
           </ul>
           </div>
         </section>
@@ -145,14 +144,12 @@ header a { color: $accentColor; }</code></pre>
         <section>
           <h3>What does Sass do?</h3>
           <div class="left-align">
-            More examples:
+            <p>More examples:</p>
+
             <ul>       
               <li><a target="_blank" href="http://codepen.io/cfarm/pen/jteAG">Cross-Browser CSS3 Gradients</a></li>
-              <li><a target="_blank" href="http://codepen.io/cfarm/pen/rkEIo">Cross-Browser Box-shadow (drop shadow) effects</a></li>
-              <li><a target="_blank" href="http://codepen.io/andrewboyd/pen/LmIxi">Inner Text Shadow effect</a></li>
-              <li><a target="_blank" href="http://codepen.io/krisbulman/pen/ACnHl">Animated CSS Progress Bars</a></li>
-              <li><a target="_blank" href="http://codepen.io/canarymason/details/BFlHD">Multiple CSS Animations in a sequence</a></li>
-              <li><a target="_blank" href="http://oddbird.net/demos/susy-off-canvas/">Off-Canvas Responsive Layout</a></li>
+              <li><a target="_blank" href="http://codepen.io/valhead/pen/mJyap">ALL the Dancing Coffee Cups</a></li>
+              <li><a target="_blank" href="http://codepen.io/danieltott/pen/AjKay">Crazy Long Shadows</a></li>
 
             </ul>
           </div>
@@ -191,7 +188,7 @@ header a { color: $accentColor; }</code></pre>
            </li>
            <li>
             <div><span class="green">Preprocessor:</span> A computer program that modifies data to conform with the input requirements of another program.
-            <span class ="blue">(Sass is a preprocessor)</span></div><br>
+            <span class ="blue">(Sass is a preprocessor!)</span></div><br>
            </li>
             <li>
             <div><span class="green">Compile:</span> The act of converting one computer program into another programming language.</div><br>
@@ -218,12 +215,14 @@ header a { color: $accentColor; }</code></pre>
           <div class="left-align">
             Up one level:
             <pre><code contenteditable class="command-line"><span class="variable">$</span> cd ../</code></pre>
-            Go to your home directory:
-            <pre><code contenteditable class="command-line"><span class="variable">$</span> cd /</code></pre>
+            Go to your user directory:
+            <pre><code contenteditable class="command-line"><span class="variable">$</span> cd ~</code></pre>
             Go to a specific folder:
             <pre><code contenteditable class="command-line"><span class="variable">$</span> <span class="identifier">cd Users/cfarman/Sites/gdi-sass</span></pre></code>
             List files in a directory:
             <pre><code contenteditable class="command-line">$ ls</pre></code>
+            Use a previously typed command:
+            <pre><code contenteditable class="command-line">Hit the up arrow!</pre></code>
             </div>
             <span class="blue left-align"><a target="_blank" href="http://files.fosswire.com/2007/08/fwunixref.pdf">Command Line Cheat Sheet!!! (In class1-exercises folder)</a></span>
         </section>
@@ -255,18 +254,18 @@ header a { color: $accentColor; }</code></pre>
           <h3>Setting up our stylesheets</h3>
           <div>
             <p>We need to structure our stylesheets before we can compile them.</p>
-            <ul>
+            <ol>
               <li>open the <span class="blue">"class1-exercises"</span> folder</li>
               <li>open the <span class="blue">"practice"</span> folder in Sublime Text</li>
-              <li>go ahead and open <a href="class1-exercises/practice/index.html" target="_blank">index.html</a> in a browser</li>
-            </ul>
+              <li>open <a href="class1-exercises/practice/index.html" target="_blank">index.html</a> in a browser</li>
+            </ol>
           </div>
         </section>
 
         <section>
           <h3>Setting up our stylesheets</h3>
           <div class="left-align">
-            <ul>
+            <ol>
               <li>rename CSS files to have a <span class="blue"><strong>.scss</strong></span> file extension</li>
               <li>structure them inside the stylesheets folder like so:
                 <ul class="red">
@@ -289,7 +288,7 @@ header a { color: $accentColor; }</code></pre>
                 </ul>
               </li>
               <li>Update your index.html stylesheet url in &lt;head&gt; to point to your /css/ folder.</li>
-            </ul>
+            </ol>
           </div>
         </section>
         
@@ -298,12 +297,13 @@ header a { color: $accentColor; }</code></pre>
           <h3>Compile with the Sass Watch Command</h3>
           <div class = "left-align">
             <p>Check out your index.html file in a browser. Looks funky, yes?</p>
-            <p class="fragment">We need to compile our .scss (Sass) files to make the CSS work in the browser.</p>
-            <p class="fragment">First, navigate via the command line to your /stylesheets directory in the "practice" folder.</p>
-            <p class="fragment">Then type:</p>
+            <p class="fragment">We need to <strong>compile</strong> our .scss (Sass) files to make the CSS work in the browser.</p>
+            <ol class="fragment">
+                <li>First, navigate via the command line to your /stylesheets directory in the "practice" folder.</li>
+                <li>Then type:</li>
 
-            <pre class="fragment"><code contenteditable class ="sass css">$ sass --watch scss:css</code></pre>
-
+            <pre><code contenteditable class ="sass css">$ sass --watch scss:css</code></pre>
+            </ol>
           </div>
         </section>
 
@@ -368,7 +368,7 @@ nav a:hover { text-decoration: underline; }</code></pre>
           <h3>Let's Develop It!</h3>
           <ul>
             <li>Open your <span class="blue">styles.scss</span> file</li>
-            <li>Rewrite some styles to use nesting and referencing the parent</li>
+            <li>Rewrite some styles to use <strong>nesting</strong> and <strong>referencing the parent</strong></li>
             <li>Look for selectors that share a common parent HTML element, like header, nav, footer, #main</li>
             <li>Look for hover styles, or add some, to practice referencing the parent with &</li>
             <li>There are lots of possible solutions! Be creative!</li>
@@ -408,12 +408,13 @@ nav a:hover { text-decoration: underline; }</code></pre>
          <section>
           <h3>Defining Variables</h3>
           <p>Variables with Sass let us reuse values more than once, while only defining them in one place</p>
-          <pre><code contenteditable class = "sass css">//define using dollar sign
+          <pre><code contenteditable class = "scss css">//define using dollar sign
 $brandColor: #f90000;
 $mainTextcolor: #fff;
 $accentColor: #ccc;</code></pre>
         <p>To create a variable you need a dollar sign before the name of your variable, and a colon: to give it a <em>value</em></p>
-        <p class="fragment">Note that in Sass files, you can comment out a line with <span class="green">// two slashes</span></p>
+        <br>
+        <p class="fragment left-align">Note that in Sass files, you can comment out a line with <span class="green">// two slashes</span></p>
 
         </section>
 
@@ -636,6 +637,7 @@ body {
           <ul>
           <li>Edit your variables in _utilities.scss file to use color functions</li>
           <li>Refer to the <a target="_blank" href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html">sass-lang.com docs</a></li>
+          <li>Check out these <a href="http://codepen.io/KatieK2/pen/hbqsB">examples of color functions visualized</a></li>
           <li>Compile to CSS to see your changes</li>
           <li class="blue">Bonus - change the color scheme of your website without editing styles.scss!</li>
         </ul>
@@ -706,7 +708,7 @@ p {
         <section>
           <h3>Let's Develop It</h3>
           <ul>
-          <li>Add some mixins to your _utilities.scss file - a good candidate is any style that needs a browser prefix</li>
+          <li>Add some mixins to your _utilities.scss file - a good candidate is any style that needs a browser prefix like the examples on <a href="http://css3please.com/">CSS3 Please</a></li>
           <li>Try replacing the footer gradient with a mixin</li>
           <li>Use these mixins in your styles.scss file</li>
           <li>Add different types of comments that describe what your mixins do, and check the final CSS in the browser inspector to see if they appear</li> 
