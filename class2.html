@@ -244,21 +244,44 @@ a { color: blue; }
           </tr></td></table>
         </section>
 
+        <!-- Exercise-->
+        <section>
+          <h3>Let's Develop It</h3>
+          <ul>
+          <li>Add multiline comments to your Sass that get output in the final CSS identifying your name, your website and the date you created the stylesheet</li>
+          <li>Add single line comments to your Sass (naming colors or describing layout styles are useful!)</li>
+          <li>View source to find your compiled CSS and see the comments that are output</li>
+        </ul>
+<pre><code contenteditable class ="sass css"><span class="comment">/* Multiline comments will appear
+ in the final CSS file */</span>
+<span class="value">//This single-line comment won't</span>
+a { color: blue; }
+</code></pre>
+        </section>
+
         
          <section class="present">
           <h3>Mixins</h3>
-           <p class="left-align">Mixins are really just a collection of one or more styles that are reusable, like variables are reusable values</p>
+           <p class="left-align">Mixins are a collection of one or more styles that are reusable, like variables are reusable values</p>
           <table class="code-compare">
             <tr><td>
             <p>Sass input:</p>
-            <pre><code contenteditable class ="sass css"><span class="value">@mixin dropshadow(<span class="variable">$text</span>)</span> {
+            <pre><code contenteditable class ="sass css"><span class="value">@mixin dropshadow</span> {
+  color: black;
+  text-shadow: 2px 4px lighten(black, 50%);
+}
+p {
+  <span class="value">@include dropshadow;</span>
+}
+</code></pre>
+            <!-- <pre><code contenteditable class ="sass css"><span class="value">@mixin dropshadow(<span class="variable">$text</span>)</span> {
   color: <span class="variable">$text</span>;
   text-shadow: 2px 4px lighten(<span class="variable">$text</span>, 50%);
 }
 p {
   <span class="value">@include dropshadow(black);</span>
 }
-</code></pre>
+</code></pre> -->
 </td>
 <td>
             <p>CSS output:</p>
@@ -271,22 +294,96 @@ p {
           </tr></td></table>
         </section>
 
-
          <section class="present">
           <h3>Mixins</h3>
-          <p class="left-align">These are especially useful for CSS3 rules that need browser prefixes, like gradients.</p>
-          <p><a target="_blank" href="http://cfarm.co/gradient">cfarm.co/gradient</a></p>
-         
+          <p class="left-align">Mixins work best when you have a bunch of styles you use more than once on different elements. Clearfix is another example:</p>
+            <pre><code contenteditable class ="sass css">@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}</code></pre>         
         </section>
+
+         <section class="present">
+          <h3>Including Mixins</h3>
+          <p class="left-align">Use @include to insert your mixin styles:</p>
+            <pre><code contenteditable class ="sass css">div.wrapper,
+.clearfix {
+  @include clearfix;
+}
+</code></pre>         
+        </section>
+
 
         <!-- Exercise-->
         <section>
           <h3>Let's Develop It</h3>
           <ul>
-          <li>Add some mixins to your _utilities.scss file - a good candidate is any style that needs a browser prefix like the examples on <a href="http://css3please.com/">CSS3 Please</a></li>
-          <li>Try replacing the footer gradient with a mixin</li>
-          <li>Use these mixins in your styles.scss file</li>
-          <li>Add different types of comments that describe what your mixins do, and check the final CSS in the browser inspector to see if they appear</li> 
+          <li>Find your clearfix styles in styles.scss (hint: they are commented) </li>
+          <li>Make a clearfix mixin to replace those styles</li>
+          <li>Use these mixins with <strong>@include</strong> in your styles.scss file</li>
+          <li><span class="blue">Double Hint:</span> use the parent selector in your mixin</li>
+        </ul>
+          <pre><code class ="sass css">@mixin clearfix {
+  property: value;
+  differentProperty: value;
+}
+.clearfix {
+  @include clearfix;
+}
+</code></pre>
+        </section>
+        
+
+
+         <section class="present">
+          <h3>CSS3 Mixins</h3>
+          <p class="left-align">Mixins are especially useful for CSS3 rules that need browser prefixes, like gradients.</p>
+          <p><a target="_blank" href="http://cfarm.co/gradient">cfarm.co/gradient</a></p>
+         
+        </section>
+
+        <!-- Advanced mixins: CSS3 and UI mixins -->
+        <section>
+          <h3>CSS3: Browser Prefixes</h3>
+          <div class="left-align">
+            Gradients are CSS3 and require browser prefixes to work in Firefox, Chrome, Safari, &amp; Internet Explorer.
+            <pre><code contenteditable class="sass css">@mixin gradient($color1: $bodyBackground, $color2: $accentBackground) {
+  background-image: -webkit-linear-gradient($color1, $color2, $color1);
+  background-image: -moz-linear-gradient($color1, $color2, $color1);
+  background-image: linear-gradient($color1, $color2, $color1);
+}
+@include gradient(#fff, #000);</code></pre>  
+</div>
+        </section>  
+
+        <!-- Advanced mixins: CSS3 and UI mixins -->
+        <section>
+          <h3>CSS3 Mixins</h3>
+          <div class="left-align">
+            <p>Other CSS3 features that require browser prefixes to work in most popular browsers include:</p>
+            <ul>
+              <li><a target="_blank" href="http://codepen.io/cfarm/pen/arBLb">@font-face</a></li>
+              <li><a target="_blank" href="http://codepen.io/cfarm/pen/BrckG">transitions</a></li>
+              <li><a target="_blank" href="http://codepen.io/cfarm/pen/rkEIo">box-shadow</a></li>
+              <li><a target="_blank" href="http://codepen.io/cfarm/pen/kcfwH">opacity</a></li>
+            </ul>
+        </div>
+        </section>  
+
+        <!-- Exercise-->
+        <section>
+          <h3>Let's Develop It</h3>
+          <ul>
+          <li>Replace the footer gradient with a mixin - add it to _utilities.scss</li>
+          <li>Look for other styles with browser prefixes like the examples on <a href="http://css3please.com/">CSS3 Please</a> and replace them with mixins - anything with -webkit, -moz, etc in front of it</li>
+          <li>Use these mixins with @include in your styles.scss file</li>
         </ul>
           <pre><code class ="sass css">@mixin example {
   property: value;
@@ -343,11 +440,28 @@ p {
 </div>
         </section>
 
+
+        <!-- Exercise 2: Advanced Mixins -->
+        <section>
+          <h3>Let's Develop It</h3>
+          <ul>
+          <li>Update your CSS3 mixins to take arguments</li>
+          <li>Gradients can take color arguments, for example</li>
+          <li>Make sure to include a default argument and try out different uses of your mixin: some @includes without an argument, and some with arguments</li>
+          <li>Compile to CSS and refresh your index page to see your changes</li>
+        </ul>
+        <pre><code contenteditable class="sass css">@mixin gradient($color1: #fff, $color2: #666) {
+  background-image: -webkit-linear-gradient($color1, $color2, $color1);
+  background-image: -moz-linear-gradient($color1, $color2, $color1);
+  background-image: linear-gradient($color1, $color2, $color1);
+}</code></pre>  
+        </section>
+
         <!-- Advanced mixins -->
         <section>
           <h3>Interpolation</h3>
           <div class="left-align">
-            With some styles, we may want to use variables right next to text, like with our image rotate style - try it in _utilities: 
+            With some styles, we may want to use variables right next to text, like with our image rotate style: 
             <pre><code contenteditable class="sass css">@mixin rotate($degree, $position) {
   -webkit-transform: rotate(-5deg); 
   -moz-transform: rotate(-5deg);
@@ -376,12 +490,36 @@ p {
         </section>        
 
 
+        <!-- Exercise 2: Advanced Mixins -->
+        <section>
+          <h3>Let's Develop It</h3>
+          <ul>
+          <li>Create a mixin in _utilities.scss using interpolation for the picture-hover-rotate styles
+          </li>
+          <li>Use this mix-ins in your styles.scss file: try out different argument values</li>
+          <li>Compile to CSS and refresh your index page to see your changes</li>
+        </ul>
+<pre><code contenteditable class="sass css">@mixin rotate(<span class="variable">$degree</span>, $position) {
+  -webkit-transform: rotate(<span class="variable">#{$degree}</span>deg); 
+  -moz-transform: rotate(<span class="variable">#{$degree}</span>deg);
+  transform: rotate(<span class="variable">#{$degree}</span>deg);
+  -webkit-transform-origin: $position;
+  -moz-transform-origin: $position;
+  transform-origin: $position;
+}</code></pre> 
+        </section>
+
         <!-- @extend -->
         <section>
           <h3>@extend</h3>
           <div class="left-align">
             Sometimes we have styles that duplicate another class, then add to it. We can use a mixin for these, OR we can use @extend:
-            <pre><code contenteditable class="sass css">.headline {
+
+
+ <table class="code-compare">
+            <tr><td>
+            <p>Sass input:</p>
+                        <pre><code contenteditable class="sass css">.headline {
   font-size: 2em;
   font-weight: bold;
 }
@@ -390,69 +528,44 @@ p {
   text-decoration: underline;
   text-transform: uppercase;
 }</code></pre>  
+</td>
+<td>
+            <p>CSS output:</p>
+            <pre><code contenteditable class="sass css">.headline,
+.lead-story-headline {
+  font-size: 2em;
+  font-weight: bold;
+}
+.lead-story-headline {
+  text-decoration: underline;
+  text-transform: uppercase;
+}</code></pre>  
+
+          </tr></td></table>
 </div>
         </section>          
+
 
         <!-- Exercise 2: Advanced Mixins -->
         <section>
           <h3>Let's Develop It</h3>
           <ul>
-          <li>Create new mixins using the following:
-            <ul>
-              <li>Multiple arguments</li>
-              <li>Default arguments</li>
-              <li>Interpolation</li>
-              <li>@extend to include common styles</li>
-            </ul>
+          <li>Use @extend to rewrite the .jump.up and .jump.down styles in styles.scss
           </li>
-          <li>Use these mix-ins in your styles.scss file</li>
+          <li>Change the color of .jump to see these changes reflected in your page</li>
           <li>Compile to CSS and refresh your index page to see your changes</li>
         </ul>
+<pre><code contenteditable class="sass css">.headline {
+  font-size: 2em;
+  font-weight: bold;
+}
+.lead-story-headline {
+  @extend .headline;
+  text-decoration: underline;
+  text-transform: uppercase;
+}</code></pre>  
         </section>
 
-        <!-- Advanced mixins: CSS3 and UI mixins -->
-        <section>
-          <h3>CSS3: Browser Prefixes</h3>
-          <div class="left-align">
-            Lots of CSS3 features require browser prefixes or have complex syntaxes. These are perfectly suited to mixins, so we can include them in our styles without having to copy and paste from sites like <a target="_blank" href="http://css3please.com/">CSS3 Please</a>.
-            <pre><code contenteditable class="sass css">@mixin rotate(<span class="variable">$degree</span>, $position) {
-  -webkit-transform: rotate(<span class="variable">#{$degree}</span>deg); 
-  -moz-transform: rotate(<span class="variable">#{$degree}</span>deg);
-  transform: rotate(<span class="variable">#{$degree}</span>deg);
-  -webkit-transform-origin: $position;
-  -moz-transform-origin: $position;
-  transform-origin: $position;
-}</code></pre>  
-</div>
-        </section>     
-
-        <!-- Advanced mixins: CSS3 and UI mixins -->
-        <section>
-          <h3>CSS3: Browser Prefixes</h3>
-          <div class="left-align">
-            Gradients are CSS3 and require browser prefixes to work in Firefox, Chrome, Safari, &amp; Internet Explorer.
-            <pre><code contenteditable class="sass css">@mixin gradient($color1: $bodyBackground, $color2: $accentBackground) {
-  background-image: -webkit-linear-gradient($color1, $color2, $color1);
-  background-image: -moz-linear-gradient($color1, $color2, $color1);
-  background-image: linear-gradient($color1, $color2, $color1);
-}
-@include gradient(#fff, #000);</code></pre>  
-</div>
-        </section>  
-
-        <!-- Advanced mixins: CSS3 and UI mixins -->
-        <section>
-          <h3>CSS3 Mixins</h3>
-          <div class="left-align">
-            <p>Other CSS3 features that require browser prefixes to work in most popular browsers include:</p>
-            <ul>
-              <li><a target="_blank" href="http://codepen.io/cfarm/pen/arBLb">@font-face</a></li>
-              <li><a target="_blank" href="http://codepen.io/cfarm/pen/BrckG"> transitions</a></li>
-              <li><a target="_blank" href="http://codepen.io/cfarm/pen/rkEIo">box-shadow</a></li>
-              <li><a target="_blank" href="http://codepen.io/cfarm/pen/kcfwH">opacity</a></li>
-            </ul>
-        </div>
-        </section>  
 
         <!-- Advanced mixins: UI development mixins -->
         <section>
@@ -597,23 +710,6 @@ height: 18px; }</code></pre>
           </div>
         </section>
 
-
-        <!-- Exercise 5: Logic -->
-        <section>
-          <h3>If/Else If</h3>
-          <div class = "left-align">
-          <p>Rewrite your existing mixins to use if/else if statements, so that they output different CSS depending on different arguments.</p>
-          <pre><code class ="php">@mixin arrow($direction: right) {
-  @if $direction == right {
-    //right arrow styles
-  }
-  @else if $direction == left {
-    // left arrow styles
-  }
-}
-</code></pre>
-          </div>
-        </section>
 
 
         <!-- Exercise 6: Loops -->
