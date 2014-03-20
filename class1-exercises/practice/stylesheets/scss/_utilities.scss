@@ -1,0 +1,38 @@
+// UTILITIES!!!!!!!
+
+// Add some Variables here!!!
+
+// Fonts
+$newFont: 'Lato', Arial, sans-serif;
+
+// Colors??????
+$grey: rgb(240,240,240);
+$blue: blue;
+$white: #fff;
+
+$bodyBackground: $grey;
+$bodyText:		 purple;
+$linkColor:		#1D766F;
+
+// Colors using hyphens instead of camelCaseText
+$header-background-color: #009D92;
+$PURPLE_ALL_CAPS_CRAZY_YELLING: purple;
+$SUP: blue;
+
+$header-bg: $blue;
+$link-color: $grey;
+
+$background: $grey;
+$brand-color: $grey;
+$primary-accent: $grey;
+
+$pageWidth: 100%;
+$pageWidthMax: 1400px;
+$headerWidth: $pageWidth;
+$oneThird:	$pageWidth/3;
+
+$famousWomanMax: $pageWidthMax/3;
+
+$famousPadding: 2%;
+$famousMargin: 1%;
+$famousWoman: $pageWidth/3 - ($famousPadding*2) - ($famousMargin*2);
